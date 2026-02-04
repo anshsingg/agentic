@@ -1,19 +1,20 @@
 import streamlit as st
-from openai import OpenAI
+from groq import Groq
 
 # 1. Page Setup
 st.set_page_config(page_title="Agentic Mock Interviewer", layout="centered")
-st.title("🤖 Agentic Mock Interviewer + Feedback")
+st.title("🤖 Agentic Mock Interviewer (Free Version)")
 
-# 2. API Setup (Try st.secrets first, or ask user)
-if "OPENAI_API_KEY" in st.secrets:
-    client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+# 2. API Setup (Groq)
+# You can paste the key here temporarily, or use the sidebar
+if "GROQ_API_KEY" in st.secrets:
+    client = Groq(api_key=st.secrets["GROQ_API_KEY"])
 else:
-    api_key = st.text_input("Enter OpenAI API Key", type="password")
+    api_key = st.text_input("Enter Groq API Key (Free)", type="password")
     if api_key:
-        client = OpenAI(api_key=api_key)
+        client = Groq(api_key=api_key)
     else:
-        st.warning("Please enter your API Key to proceed.")
+        st.warning("Get a free key at https://console.groq.com/keys")
         st.stop()
 
 # 3. Input: Role
@@ -32,7 +33,7 @@ if st.button("Generate Interview Question"):
             
             try:
                 response = client.chat.completions.create(
-                    model="gpt-3.5-turbo",
+                    model="llama3-8b-8192",  # Free Llama 3 model
                     messages=[{"role": "user", "content": prompt}],
                     temperature=0.7
                 )
@@ -65,7 +66,7 @@ if "question" in st.session_state:
                 """
                 
                 feedback_response = client.chat.completions.create(
-                    model="gpt-3.5-turbo", 
+                    model="llama3-8b-8192", 
                     messages=[{"role": "user", "content": feedback_prompt}],
                     temperature=0.7
                 )
@@ -81,7 +82,7 @@ if "question" in st.session_state:
                 """
                 
                 rating_response = client.chat.completions.create(
-                    model="gpt-3.5-turbo",
+                    model="llama3-8b-8192",
                     messages=[{"role": "user", "content": rating_prompt}],
                     temperature=0.7
                 )
