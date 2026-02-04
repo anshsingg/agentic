@@ -33,7 +33,7 @@ if st.button("Generate Interview Question"):
             
             try:
                 response = client.chat.completions.create(
-                    model="llama3-8b-8192",  # Free Llama 3 model
+                    model=""llama-3.3-70b-versatile"",  # Free Llama 3 model
                     messages=[{"role": "user", "content": prompt}],
                     temperature=0.7
                 )
