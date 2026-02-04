@@ -4,7 +4,7 @@ from openai import OpenAI
 # Page Config
 st.set_page_config(page_title="AI Mock Interviewer", page_icon="👨‍💻")
 
-st.title("🧒 Agentic Mock Interviewer")
+st.title("🤖 Agentic Mock Interviewer")
 st.caption("I am an AI agent designed to simulate a technical interview. Select your topic and let's begin.")
 
 # 1. Sidebar Configuration
