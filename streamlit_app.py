@@ -10,7 +10,7 @@ st.caption("I am an AI agent designed to simulate a technical interview. Select 
 # 1. Sidebar Configuration
 with st.sidebar:
     st.header("⚙️ Configuration")
-    api_key = st.text_input("OpenAI API Key", type="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")
+    api_key = st.text_input("OpenAI API Key", type="sk-...uV0A")
     
     st.divider()
     
