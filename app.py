@@ -66,7 +66,7 @@ if "question" in st.session_state:
                 """
                 
                 feedback_response = client.chat.completions.create(
-                    model="llama3-8b-8192", 
+                    model="llama-3.3-70b-versatile", 
                     messages=[{"role": "user", "content": feedback_prompt}],
                     temperature=0.7
                 )
@@ -82,7 +82,7 @@ if "question" in st.session_state:
                 """
                 
                 rating_response = client.chat.completions.create(
-                    model="llama3-8b-8192",
+                    model="llama-3.3-70b-versatile",
                     messages=[{"role": "user", "content": rating_prompt}],
                     temperature=0.7
                 )
